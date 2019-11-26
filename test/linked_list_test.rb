@@ -73,4 +73,15 @@ class LinkedListTest < Minitest::Test
     list.append('Hardy')
     assert_equal 'The Rhoades family, followed by the Hardy family', list.to_string
   end
+
+  def test_prepend_adds_node_to_head_of_list
+    list = LinkedList.new
+
+    list.append('Brooks')
+    list.append('Henderson')
+    list.prepend('McKinney')
+
+    assert_equal 3, list.count
+    assert_equal 'McKinney', list.head.surname
+  end
 end
