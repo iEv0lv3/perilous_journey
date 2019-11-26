@@ -84,4 +84,15 @@ class LinkedListTest < Minitest::Test
     assert_equal 3, list.count
     assert_equal 'McKinney', list.head.surname
   end
+
+  def test_insert_adds_node_to_argument_index
+    list = LinkedList.new
+
+    list.append('Brooks')
+    list.append('Henderson')
+    list.prepend('McKinney')
+    list.insert(1, 'Lawson')
+    binding.pry
+    assert_equal 'Lawson', list.head.next_node.surname == 'Lawson'
+  end
 end
