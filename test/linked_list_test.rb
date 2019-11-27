@@ -85,14 +85,25 @@ class LinkedListTest < Minitest::Test
     assert_equal 'McKinney', list.head.surname
   end
 
-  def test_insert_adds_node_to_argument_index
+  def test_insert_adds_node_to_argument_index_and_adds_nodes_to_next_node
     list = LinkedList.new
 
     list.append('Brooks')
     list.append('Henderson')
     list.prepend('McKinney')
     list.insert(1, 'Lawson')
-    
+
     assert_equal 'Lawson', list.head.next_node.surname
+  end
+
+  def test_find_returns_index_plus_length_of_families
+    list = LinkedList.new
+
+    list.append('Brooks')
+    list.append('Henderson')
+    list.prepend('McKinney')
+    list.insert(1, 'Lawson')
+    binding.pry
+    assert_equal 'Brooks', list.new_node.new_node.new_node.surname
   end
 end
