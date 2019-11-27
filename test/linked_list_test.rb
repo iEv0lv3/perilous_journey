@@ -92,7 +92,7 @@ class LinkedListTest < Minitest::Test
     list.append('Henderson')
     list.prepend('McKinney')
     list.insert(1, 'Lawson')
-    binding.pry
-    assert_equal 'Lawson', list.head.next_node.surname == 'Lawson'
+    
+    assert_equal 'Lawson', list.head.next_node.surname
   end
 end
