@@ -39,7 +39,6 @@ class LinkedList
     node_count << @head
     node.next_node = node_count[index]
     node_count[(index - 1)].next_node = node
-    binding.pry
   end
 
   def count
