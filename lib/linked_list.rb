@@ -9,11 +9,36 @@ class LinkedList
   end
 
   def append(data)
+    current_node = @head
+
     if @head == nil
       @head = Node.new(data)
     else
-      @head.next_node = Node.new(data)
+      while current_node.next_node != nil
+        current_node = current_node.next_node
+      end
+      current_node.next_node = Node.new(data)
     end
+  end
+
+  def prepend(data)
+    pre = Node.new(data)
+    pre.next_node = @head
+    @head = pre
+  end
+
+  def insert(index, data)
+    node = Node.new(data)
+    node_count = []
+    current_node = @head
+
+    while current_node.next_node != nil
+      node_count << current_node
+      current_node = current_node.next_node
+    end
+    node_count << @head
+    node.next_node = node_count[index]
+    node_count[(index - 1)].next_node = node
   end
 
   def count
