@@ -52,15 +52,19 @@ class LinkedList
     end
     node_count << @head
     
-    count = 1
+    count = 0
     length.times do
       if families.empty?
         families.concat("The #{node_count[index].surname} family")
-        binding.pry
-      else
+        count += 1
+      elsif node_count[index + count] == node_count.last
+        families.concat(", followed by the #{current_node.surname} family")
+        break
+      elsif (index + count) <= length
         families.concat(", followed by the #{node_count[index + count].surname} family")
         count += 1
-        binding.pry
+      elsif (index + count) >= length && node_count[index + count].last
+        families.concat(", followed by the #{current_node.surname} family")
       end
     end
     families
