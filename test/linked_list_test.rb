@@ -106,4 +106,16 @@ class LinkedListTest < Minitest::Test
 
     assert_equal 'The Lawson family', list.find(1, 1)
   end
+
+  def test_includes_trys_to_find_names_and_return_true_or_false
+    list = LinkedList.new
+
+    list.append('Brooks')
+    list.append('Henderson')
+    list.prepend('McKinney')
+    list.insert(1, 'Lawson')
+
+    assert_equal true, list.includes?('Henderson')
+    assert_equal false, list.includes?('Williams')
+  end
 end
