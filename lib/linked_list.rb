@@ -51,7 +51,7 @@ class LinkedList
       current_node = current_node.next_node
     end
     node_count << @head
-    
+
     count = 0
     length.times do
       if families.empty?
@@ -68,6 +68,20 @@ class LinkedList
       end
     end
     families
+  end
+
+  def includes?(name)
+    current_node = @head
+
+    loop do
+      if current_node.surname == name
+        return true
+      elsif current_node.surname != name && !current_node.next_node.nil?
+        current_node = current_node.next_node
+      elsif current_node.next_node == nil
+        return false
+      end
+    end
   end
 
   def count
@@ -108,11 +122,11 @@ class LinkedList
   end
 end
 
-list = LinkedList.new
+# list = LinkedList.new
 
-list.append('Brooks')
-list.append('Henderson')
-list.prepend('McKinney')
-list.insert(1, 'Lawson')
+# list.append('Brooks')
+# list.append('Henderson')
+# list.prepend('McKinney')
+# list.insert(1, 'Lawson')
 
-binding.pry
+# binding.pry
