@@ -45,4 +45,13 @@ class WagonTrainTest < Minitest::Test
 
     assert_equal 'West', wt.list.head.surname
   end
+
+  def test_insert_to_wagon_train
+    wt = WagonTrain.new
+    wt.append('Burke', 'pounds of food' => 200)
+    wt.prepend('West', 'spare wagon tongues' => 3)
+    wt.insert(1, 'Williams', 'plant seeds' => 153)
+
+    assert_equal 'Williams', wt.list.head.next_node.surname
+  end
 end
