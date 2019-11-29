@@ -118,4 +118,17 @@ class LinkedListTest < Minitest::Test
     assert_equal true, list.includes?('Henderson')
     assert_equal false, list.includes?('Williams')
   end
+
+  def test_pop_removes_last_node_from_list
+    list = LinkedList.new
+
+    list.append('Brooks')
+    list.append('Henderson')
+    list.prepend('McKinney')
+    list.insert(1, 'Lawson')
+    binding.pry
+    list.pop
+
+    assert_equal false, list.includes?('Henderson')
+  end
 end
