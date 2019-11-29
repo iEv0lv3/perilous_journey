@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/linked_list'
@@ -126,7 +128,6 @@ class LinkedListTest < Minitest::Test
     list.append('Henderson')
     list.prepend('McKinney')
     list.insert(1, 'Lawson')
-    binding.pry
     list.pop
 
     assert_equal false, list.includes?('Henderson')
