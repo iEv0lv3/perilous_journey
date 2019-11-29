@@ -37,4 +37,12 @@ class WagonTrainTest < Minitest::Test
 
     assert_equal 2, wt.count
   end
+
+  def test_prepend_to_wagon_train
+    wt = WagonTrain.new
+    wt.append('Burke', 'pounds of food' => 200)
+    wt.prepend('West', 'spare wagon tongues' => 3)
+
+    assert_equal 'West', wt.list.head.surname
+  end
 end
