@@ -1,5 +1,4 @@
 require './lib/node'
-require 'pry'
 
 class LinkedList
   attr_accessor :head
@@ -8,27 +7,27 @@ class LinkedList
     @head = nil
   end
 
-  def append(data)
+  def append(family, supplies)
     current_node = @head
 
     if @head == nil
-      @head = Node.new(data)
+      @head = Node.new(family, supplies)
     else
       while current_node.next_node != nil
         current_node = current_node.next_node
       end
-      current_node.next_node = Node.new(data)
+      current_node.next_node = Node.new(family, supplies)
     end
   end
 
-  def prepend(data)
-    pre = Node.new(data)
+  def prepend(family, supplies)
+    pre = Node.new(family, supplies)
     pre.next_node = @head
     @head = pre
   end
 
-  def insert(index, data)
-    node = Node.new(data)
+  def insert(index, family, supplies)
+    node = Node.new(family, supplies)
     node_count = []
     current_node = @head
 
@@ -41,7 +40,7 @@ class LinkedList
     node_count[(index - 1)].next_node = node
   end
 
-  def find(index, length)
+  def find(index, range)
     node_count = []
     current_node = @head
     families = ""
@@ -53,17 +52,18 @@ class LinkedList
     node_count << @head
 
     count = 0
-    length.times do
+    range.times do
       if families.empty?
         families.concat("The #{node_count[index].surname} family")
         count += 1
       elsif node_count[index + count] == node_count.last
         families.concat(", followed by the #{current_node.surname} family")
         break
-      elsif (index + count) <= length
-        families.concat(", followed by the #{node_count[index + count].surname} family")
+      elsif (index + count) <= range
+        families.concat(", followed by the #{node_count[index + count].surname}
+          family")
         count += 1
-      elsif (index + count) >= length && node_count[index + count].last
+      elsif (index + count) >= range && node_count[index + count].last
         families.concat(", followed by the #{current_node.surname} family")
       end
     end
@@ -131,12 +131,3 @@ class LinkedList
     popped_node
   end
 end
-
-# list = LinkedList.new
-
-# list.append('Brooks')
-# list.append('Henderson')
-# list.prepend('McKinney')
-# list.insert(1, 'Lawson')
-
-# binding.pry
