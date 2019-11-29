@@ -122,27 +122,21 @@ class LinkedList
 
   def pop
     current_node = @head
-    popped_node = nil
-     binding.pry
     until current_node.next_node.next_node.nil?
       current_node = current_node.next_node
-      binding.pry
     end
-
     popped_node = current_node.next_node
-    binding.pry
     current_node.next_node = nil
-
-    binding.pry
+    puts "The #{popped_node.surname} family has died of dysentery"
     popped_node
   end
 end
 
-list = LinkedList.new
+# list = LinkedList.new
 
-list.append('Brooks')
-list.append('Henderson')
-list.prepend('McKinney')
-list.insert(1, 'Lawson')
+# list.append('Brooks')
+# list.append('Henderson')
+# list.prepend('McKinney')
+# list.insert(1, 'Lawson')
 
-binding.pry
+# binding.pry
