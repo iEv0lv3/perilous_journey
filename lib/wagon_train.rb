@@ -40,4 +40,21 @@ class WagonTrain
   def count
     @list.count
   end
+
+  def supplies
+    current_node = @list.head
+    all_supplies = {}
+    @list.count.times do
+      current_node.supplies.each do |k, v|
+        if all_supplies.key?(k)
+          value = all_supplies[k]
+          all_supplies[k] = v + value
+        else
+          all_supplies[k] = v
+        end
+        current_node = current_node.next_node
+      end
+    end
+    all_supplies
+  end
 end
