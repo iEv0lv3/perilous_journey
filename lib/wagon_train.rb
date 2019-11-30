@@ -72,6 +72,8 @@ class WagonTrain
         hunt[key] = animals[key]
       end
     end
+    food = @list.head.supplies['pounds of food']
+    @list.head.supplies['pounds of food'] = hunt.values.sum + food
     "You killed #{kills['squirrel']} squirrel, #{kills['deer']} deer, #{kills['bison']} bison totaling #{hunt.values.sum} pounds of food."
   end
 end
