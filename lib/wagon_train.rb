@@ -57,4 +57,21 @@ class WagonTrain
     end
     all_supplies
   end
+
+  def go_hunting
+    animals = { 'squirrel' => 2, 'deer' => 40, 'bison' => 100 }
+    kills = { 'squirrel' => 0, 'deer' => 0, 'bison' => 0 }
+    hunt = {}
+    rand(6).times do
+      key = animals.keys.sample
+      kills[key] += 1
+      if hunt.key?(key)
+        value = hunt[key]
+        hunt[key] = (animals[key] + value)
+      else
+        hunt[key] = animals[key]
+      end
+    end
+    "You killed #{kills['squirrel']} squirrel, #{kills['deer']} deer, #{kills['bison']} bison totaling #{hunt.values.sum} pounds of food."
+  end
 end
