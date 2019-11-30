@@ -64,4 +64,15 @@ class WagonTrainTest < Minitest::Test
 
     assert_equal 'The Magnus family, followed by the West family', wt.find(0, 2)
   end
+
+  def test_add_supplies_to_wagon_train
+    wt = WagonTrain.new
+    wt.append('Burke', 'pounds of food' => 200)
+    wt.prepend('West', 'spare wagon tongues' => 3)
+    wt.insert(1, 'Williams', 'plant seeds' => 153)
+    wt.prepend('Magnus', 'velociraptors' => 2)
+    wt.append('Smith', 'plant seeds' => 200)
+
+    assert_equal 353, wt.supplies['plant seeds']
+  end
 end
