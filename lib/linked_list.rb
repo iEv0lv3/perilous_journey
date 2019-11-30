@@ -27,17 +27,18 @@ class LinkedList
   end
 
   def insert(index, family, supplies)
-    node = Node.new(family, supplies)
-    node_count = []
     current_node = @head
+    count = 0
+    return 'Invalid index.' unless index >= 0
 
-    while current_node.next_node != nil
-      node_count << current_node
+    until index.zero? || count == (index - 1) || current_node.next_node.nil?
       current_node = current_node.next_node
+      count += 1
     end
-    node_count << @head
-    node.next_node = node_count[index]
-    node_count[(index - 1)].next_node = node
+    nodes_to_append = current_node.next_node
+    current_node.next_node = Node.new(family, supplies)
+    current_node.next_node.next_node = nodes_to_append
+    current_node.next_node
   end
 
   def find(index, range)
@@ -60,8 +61,7 @@ class LinkedList
         families.concat(", followed by the #{current_node.surname} family")
         break
       elsif (index + count) <= range
-        families.concat(", followed by the #{node_count[index + count].surname}
-          family")
+        families.concat(", followed by the #{node_count[index + count].surname} family")
         count += 1
       elsif (index + count) >= range && node_count[index + count].last
         families.concat(", followed by the #{current_node.surname} family")
