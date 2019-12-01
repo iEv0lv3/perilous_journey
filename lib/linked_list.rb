@@ -13,7 +13,7 @@ class LinkedList
     if @head == nil
       @head = Node.new(family, supplies)
     else
-      while current_node.next_node != nil
+      until current_node.next_node.nil?
         current_node = current_node.next_node
       end
       current_node.next_node = Node.new(family, supplies)
