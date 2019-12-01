@@ -79,8 +79,8 @@ class WagonTrainTest < Minitest::Test
   def test_go_hunting
     wt = WagonTrain.new
     wt.append('Burke', 'pounds of food' => 200)
+    wt.go_hunting
 
-    assert wt.go_hunting
-    assert wt.go_hunting
+    assert_equal true, wt.supplies['pounds of food'] > 200
   end
 end
